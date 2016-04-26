@@ -1,0 +1,22 @@
+{
+  "name": "buero/pact-bundle",
+  "license": "proprietary",
+  "type": "symfony-bundle",
+  "autoload": {
+    "psr-4": { "Buero\\AccessBundle\\": "" }
+  },
+  "require": {
+    "php": ">=5.3.9",
+    "jms/di-extra-bundle": "^1.7",
+    "doctrine/doctrine-fixtures-bundle": "^2.2",
+    "apy/datagrid-bundle": "dev-master"
+  },
+  "require-dev": {
+
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0.x-dev"
+    }
+  }
+}
