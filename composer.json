@@ -2,9 +2,8 @@
   "name": "buero/pact-bundle",
   "license": "proprietary",
   "type": "symfony-bundle",
-  "minimum-stability": "dev",
   "autoload": {
-    "psr-4": { "Buero\\AccessBundle\\": "" }
+    "psr-4": { "Buero\\PactBundle\\": "" }
   },
   "require": {
     "php": ">=5.3.9"
