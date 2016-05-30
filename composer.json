@@ -2,6 +2,7 @@
   "name": "buero/pact-bundle",
   "license": "proprietary",
   "type": "symfony-bundle",
+  "minimum-stability": "dev",
   "autoload": {
     "psr-4": { "Buero\\AccessBundle\\": "" }
   },
