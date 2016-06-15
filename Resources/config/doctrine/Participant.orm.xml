@@ -10,6 +10,9 @@
     </one-to-one>
 
     <many-to-many target-entity="Buero\PactBundle\Entity\Badge" field="badges">
+      <cascade>
+        <cascade-persist/>
+      </cascade>
       <join-table name="participants_badges">
         <join-columns>
           <join-column name="participant_id" referenced-column-name="id" />

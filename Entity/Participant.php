@@ -5,11 +5,12 @@ namespace Buero\PactBundle\Entity;
 use Buero\PactBundle\DoctrineExtensions\Behaviours as Behaviour;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Psiac\AccessBundle\Model\UserSubjectInterface;
 
 /**
  * Participant
  */
-class Participant
+class Participant implements UserSubjectInterface
 {
     use Behaviour\CreateAndUpdateStampedTrait;
 
@@ -96,6 +97,16 @@ class Participant
     }
 
     /**
+     * Add badge
+     *
+     * @return Badge
+     */
+    public function addBadge(Badge $badge)
+    {
+        $this->badges->add($badge);
+    }
+
+    /**
      * Set experience
      *
      * @param integer $experience
@@ -116,5 +127,10 @@ class Participant
     public function getExperience()
     {
         return $this->experience;
+    }
+
+    public function getUsername()
+    {
+        // TODO: Implement getUsername() method.
     }
 }

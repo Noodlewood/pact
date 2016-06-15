@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}{% endblock %}PsiacPact</title>
+        {% block stylesheets %}
+            {% stylesheets
+                '@BueroPactBundle/Resources/scss/style.scss'
+                output='css/vendor.css'
+            %}
+                <link rel="stylesheet" href="{{ asset_url }}" />
+            {% endstylesheets %}
+        {% endblock %}
+        {% block meta %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('bundles/psiaccommonfrontend/images/favicon.ico') }}" />
+        <!-- v{{ version }} {{ build_date }} {{ revision }} -->
+    </head>
+    <body>
+        {% block header %}
+            <h1>PsiacPact</h1>
+        {% endblock %}
+        {% block body %}{% endblock %}
+        {% block navigation %}
+            <div>NAVIGATION</div>
+        {% endblock %}
+        {% block footer %}
+            <div>FOOTER</div>
+        {% endblock %}
+        {% block javascripts %}
+            {% javascripts
+            '@jquery'
+            '@BueroPactBundle/Resources/js/*'
+            output='js/common-frontend.js' %}
+            <script src="{{ asset_url }}"></script>
+            {% endjavascripts %}
+        {% endblock %}
+    </body>
+</html>

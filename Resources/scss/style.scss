@@ -1,0 +1,30 @@
+.task-list {
+  padding: 100px;
+  background-color: darkseagreen;
+}
+
+.task {
+  width: 250px;
+  height: 100px;
+  background-color: orangered;
+  padding: 50px;
+  font-size: 70pt;
+}
+
+.badge {
+
+  width: 100px;
+  height: 67px;
+
+  &.level1 {
+    background: transparent url("../bundles/bueropact/images/badges/badge1.png") center center;
+  }
+
+  &.level2 {
+    background: transparent url("../bundles/bueropact/images/badges/badge2.png") center center;
+  }
+
+  &.level3 {
+    background: transparent url("../bundles/bueropact/images/badges/badge3.png") center center;
+  }
+}
