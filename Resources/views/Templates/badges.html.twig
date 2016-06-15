@@ -1,0 +1,6 @@
+<div class="exp">EXP: {{ user.subject.experience }}</div>
+<div class="badges">
+    {% for badge in user.subject.badges %}
+        <div class="badge level{{ badge.level }}"></div>
+    {% endfor %}
+</div>
