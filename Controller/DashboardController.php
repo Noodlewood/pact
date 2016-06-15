@@ -5,6 +5,7 @@ namespace Buero\PactBundle\Controller;
 use Buero\AccessBundle\Service\CurrentUserService;
 use Buero\PactBundle\Entity\Badge;
 use Buero\PactBundle\Entity\Participant;
+use Doctrine\Common\Collections\ArrayCollection;
 use Psiac\AccessBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use JMS\DiExtraBundle\Annotation as DI;
@@ -39,7 +40,15 @@ class DashboardController extends Controller
             $manager = $this->getDoctrine()->getManager();
             $manager->persist($currentUser);
             $manager->flush();
+        } else {
+            $currentUser->getSubject()->setExperience(900);
+            /* @var ArrayCollection $badges */
+            $currentUser->getSubject()->getBadges()->clear();
+            $manager = $this->getDoctrine()->getManager();
+            $manager->persist($currentUser);
+            $manager->flush();
         }
+
 
         return $this->render('BueroPactBundle:Dashboard:show.html.twig', [
             'user' => $currentUser
@@ -57,14 +66,28 @@ class DashboardController extends Controller
 
         $currentUser->getSubject()->setExperience($currentUser->getSubject()->getExperience() + $exp);
 
-        if ($currentUser->getSubject()->getExperience() > 2000) {
+        if ($currentUser->getSubject()->getExperience() > 3000) {
+            $badge = new Badge();
+            $badge->setLevel(3);
+            $currentUser->getSubject()->addBadge($badge);
+        }
+        else if ($currentUser->getSubject()->getExperience() > 2000) {
             $badge = new Badge();
             $badge->setLevel(2);
+            $currentUser->getSubject()->addBadge($badge);
+        }
+        else if ($currentUser->getSubject()->getExperience() > 1000) {
+            $badge = new Badge();
+            $badge->setLevel(1);
             $currentUser->getSubject()->addBadge($badge);
         }
 
         $manager = $this->getDoctrine()->getManager();
         $manager->persist($currentUser->getSubject());
         $manager->flush();
+
+        return $this->render('BueroPactBundle:Templates:badges.html.twig', [
+            'user' => $currentUser
+        ]);
     }
 }

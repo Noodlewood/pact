@@ -1,13 +1,11 @@
 {% extends 'BueroPactBundle::layout.html.twig' %}
 
 {% block body %}
+    <h4>{{ user.username }}</h4>
+    <div class="badge-area">
+        {% include 'BueroPactBundle:Templates:badges.html.twig' %}
+    </div>
     <div class="task-list">
-        <div class="exp">EXP: {{ user.subject.experience }}</div>
-        <div class="badges">
-            {% for badge in user.subject.badges %}
-                <div class="badge level{{ badge.level }}"></div>
-            {% endfor %}
-        </div>
         <div class="task">TASK</div>
     </div>
 
@@ -19,13 +17,19 @@
         ($(function() {
             var url = "{{ path('pact_expgained') }}";
             $('.task').click(function() {
+                $(this).animate({
+                    opacity: 0.25
+                }, 100, function() {
+                    $(this).css('opacity', 1);
+                });
                 $.ajax({
                     type: "POST",
                     url: url,
                     data: {
-                        exp: 100
+                        exp: 300
                     },
                     success: function(response) {
+                        $('.badge-area').html(response);
                     }
                 });
             })
