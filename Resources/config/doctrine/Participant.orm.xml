@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity repository-class="Buero\PactBundle\Repository\ParticipantRepository" name="Buero\PactBundle\Entity\Participant">
+    <id name="id" type="integer" column="id">
+      <generator strategy="AUTO"/>
+    </id>
+
+    <one-to-one field="user" target-entity="Psiac\AccessBundle\Entity\User">
+      <join-column name="user_id" referenced-column-name="id" nullable="false" />
+    </one-to-one>
+
+    <many-to-many target-entity="Buero\PactBundle\Entity\Badge" field="badges">
+      <join-table name="participants_badges">
+        <join-columns>
+          <join-column name="participant_id" referenced-column-name="id" />
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="badge_id" referenced-column-name="id" />
+        </inverse-join-columns>
+      </join-table>
+    </many-to-many>
+
+    <field name="experience" type="integer" column="Experience" nullable="true"/>
+  </entity>
+</doctrine-mapping>
