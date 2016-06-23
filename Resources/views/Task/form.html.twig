@@ -1,0 +1,10 @@
+{% extends 'BueroPactBundle::layout.html.twig' %}
+
+{% block body %}
+    <h2>{{ task.entityName }}</h2>
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button type="submit">{{ "Speichern" | trans }}</button>
+    <a class="button grey additional-submit-buttons" href="{{ path('pact_manager_config') }}">{{ "Abbrechen" | trans }}</a>
+    {{ form_end(form) }}
+{% endblock %}

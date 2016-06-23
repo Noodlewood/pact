@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity repository-class="Buero\PactBundle\Repository\TaskRepository" name="Buero\PactBundle\Entity\Task">
+    <id name="id" type="integer" column="id">
+      <generator strategy="AUTO"/>
+    </id>
+    <field name="entityName" type="string" column="entityName" length="255"/>
+    <field name="fields" type="array" column="fields"/>
+    <field name="routeUrl" type="string" column="routeUrl" length="255" nullable="true"/>
+  </entity>
+</doctrine-mapping>
